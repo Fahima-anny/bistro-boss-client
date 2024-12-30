@@ -8,7 +8,8 @@ const navlinks =
 </>
 
     return (
-        <div className="navbar bg-base-100 max-w-screen-xl mx-auto">
+   <div className="bg-black bg-opacity-30 z-10 fixed navbar">
+         <div className="navbar text-white max-w-screen-xl mx-auto">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -42,6 +43,7 @@ const navlinks =
           <a className="btn">Button</a>
         </div>
       </div>
+   </div>
     );
 };
 
