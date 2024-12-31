@@ -10,3 +10,10 @@
 .swiper-pagination {
     position:relative !important;
 }
+
+.menu li > *:not(ul, .menu-title, details, .btn):active, .menu li > *:not(ul, .menu-title, details, .btn).active, .menu li > details > summary:active {
+    /* background: red !important; */
+    background-color: transparent;
+    color: #FCCA06;
+    text-decoration: underline;
+}
