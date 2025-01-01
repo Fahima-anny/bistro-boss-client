@@ -1,13 +1,18 @@
 /* eslint-disable react/prop-types */
 
+import { Parallax } from 'react-parallax';
+
 
 const CoverSection = ({img, title, para}) => {
     return (
-        <div
-        className="hero min-h-[75vh]"
-        style={{
-          backgroundImage: `url(${img})`,
-        }}>
+        <Parallax
+        blur={{ min: -15, max: 15 }}
+        bgImage={img}
+        bgImageAlt="the dog"
+        strength={-200}
+    >
+   <div
+        className="hero min-h-[85vh]">
         <div className="hero-overlay bg-black bg-opacity-60  h-[50vh] w-[65vw]"></div>
         <div className="hero-content text-neutral-content text-center">
           <div className="max-w-2xl font-serif text-white">
@@ -18,6 +23,9 @@ const CoverSection = ({img, title, para}) => {
           </div>
         </div>
       </div>
+    </Parallax>
+
+      
     );
 };
 

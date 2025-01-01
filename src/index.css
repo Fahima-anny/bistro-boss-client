@@ -17,3 +17,12 @@
     color: #FCCA06;
     text-decoration: underline;
 }
+
+.react-tabs__tab {
+border: none !important;
+}
+
+.react-tabs__tab--selected {
+    color: #ddb100 !important;
+    text-decoration: underline;
+}
