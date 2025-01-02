@@ -8,6 +8,7 @@ const navlinks =
 <li><NavLink to='/'>Home</NavLink></li>
 <li><NavLink to='/menu'>Menu</NavLink></li>
 <li><NavLink to='/order/pizza'>Order Food</NavLink></li>
+<li><NavLink to='/login'>Login</NavLink></li>
 </>
 
     return (

@@ -5,6 +5,7 @@ import Main from "../Layoits/Main";
 import Home from "../Layoits/Home/Home";
 import Menu from "../Layoits/Menu/Menu";
 import Order from "../Layoits/Order/Order/Order";
+import Login from "../Layoits/Login/Login";
 
 
   const router = createBrowserRouter([
@@ -19,6 +20,10 @@ import Order from "../Layoits/Order/Order/Order";
         {
             path: '/menu',
             element: <Menu></Menu>
+        },
+        {
+            path: '/login',
+            element: <Login></Login>
         },
         {
             path: '/order/:category',
