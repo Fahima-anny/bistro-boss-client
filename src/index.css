@@ -26,3 +26,14 @@ border: none !important;
     color: #ddb100 !important;
     text-decoration: underline;
 }
+
+.swiper-pagination-bullet {
+    background: #f0f0f0 !important; /* Example: custom bullet color */
+    width: 30px !important;
+    height: 30px !important;
+    opacity: 1 !important;
+  }
+  
+  .swiper-pagination-bullet-active {
+    background: #cfcfcf !important; /* Example: active bullet color */
+  }

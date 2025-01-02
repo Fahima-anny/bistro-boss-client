@@ -5,11 +5,12 @@ import { useState } from "react";
 import 'react-tabs/style/react-tabs.css';
 import useMenu from "../../../Components/Hooks/useMenu";
 import OrderTab from "../OrderTab/OrderTab";
-import { useParams } from "react-router-dom";
+import { useLoaderData, useParams } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 
 const Order = () => {
 
+    const {count} = useLoaderData() ;
     const categories = ['pizza', 'soup', 'salad', 'desserts', 'drinks'] ;
     const {category} = useParams() ;
     const initialIndex = categories.indexOf(category)
@@ -48,19 +49,19 @@ const drinks = menu.filter(item => item.category === "drinks")
   </TabList>
 
   <TabPanel>
-<OrderTab items={pizza}></OrderTab>
+<OrderTab count={count} items={pizza}></OrderTab>
   </TabPanel>
   <TabPanel>
-  <OrderTab items={soup}></OrderTab>
+  <OrderTab count={count} items={soup}></OrderTab>
   </TabPanel>
   <TabPanel>
-  <OrderTab items={salad}></OrderTab>
+  <OrderTab count={count} items={salad}></OrderTab>
   </TabPanel>
   <TabPanel>
-  <OrderTab items={dessert}></OrderTab>
+  <OrderTab count={count} items={dessert}></OrderTab>
   </TabPanel>
   <TabPanel>
-  <OrderTab items={drinks}></OrderTab>
+  <OrderTab count={count} items={drinks}></OrderTab>
   </TabPanel>
 </Tabs>
 </div>

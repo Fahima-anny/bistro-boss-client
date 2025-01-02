@@ -22,7 +22,8 @@ import Order from "../Layoits/Order/Order/Order";
         },
         {
             path: '/order/:category',
-            element: <Order></Order>
+            element: <Order></Order>,
+            loader: () => fetch("http://localhost:5000/menuItem") 
         },
       ]
     },
