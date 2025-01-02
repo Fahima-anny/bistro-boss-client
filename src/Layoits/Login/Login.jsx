@@ -1,10 +1,15 @@
-import { useEffect, useRef, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { loadCaptchaEnginge, LoadCanvasTemplate, validateCaptcha } from 'react-simple-captcha';
+import { AuthContext } from '../../Providers/AuthProvider';
+import { Link, useLocation } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 
 const Login = () => {
 
-const captchaRef = useRef(null) ;
 const [disabled, setDisabled] = useState(true) ;
+const {loginUser} = useContext(AuthContext) ;
+const location = useLocation() ;
+const from = location?.state || "/" ;
 
     useEffect(() => {
         loadCaptchaEnginge(6); 
@@ -16,10 +21,16 @@ const handleLogin = e => {
     const email = form.email.value ;
     const pass = form.pass.value ;
     console.log(email, pass);
+
+    loginUser(email,pass)
+    .then(res => {
+      const user = res.user ;
+      console.log(user);
+    })
 }
 
-const handleValidateCaptcha = () => {
-const user_captcha_value = captchaRef.current.value ;
+const handleValidateCaptcha = (e) => {
+const user_captcha_value = e.target.value ;
 console.log(user_captcha_value);
 
 if(validateCaptcha(user_captcha_value)){
@@ -32,6 +43,9 @@ setDisabled(true)
 
     return (
         <div className="hero bg-base-200 min-h-screen">
+          <Helmet>
+                      <title>Bistro Boss | Login</title>
+                    </Helmet>
         <div className="hero-content flex-col lg:flex-row-reverse">
           <div className="text-center lg:text-left">
             <h1 className="text-5xl font-bold">Login now!</h1>
@@ -62,14 +76,13 @@ setDisabled(true)
                 <label className="label">
                 <LoadCanvasTemplate />
                 </label>
-              <div className='grid grid-cols-3 gap-2'>
-              <input type="text" name="captcha" ref={captchaRef} placeholder="type the captcha code" className="input input-bordered col-span-2" required />
-              <button onClick={handleValidateCaptcha} className='btn btn-warning btn-outline'>Validate</button>
-              </div>
+              <input type="text" onBlur={handleValidateCaptcha} name="captcha" placeholder="type the captcha code" className="input input-bordered col-span-2" required />
+              {/* <button onClick= className='btn btn-warning btn-outline'>Validate</button> */}
               </div>
               <div className="form-control mt-6">
                <input disabled={disabled} type="submit" className="btn btn-warning" value="Login" />
               </div>
+              <p className='font-semibold'>New here ? <Link to='/signup' className='text-warning'>Create a new Account.</Link></p>
             </form>
           </div>
         </div>

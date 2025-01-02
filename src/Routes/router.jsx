@@ -6,6 +6,8 @@ import Home from "../Layoits/Home/Home";
 import Menu from "../Layoits/Menu/Menu";
 import Order from "../Layoits/Order/Order/Order";
 import Login from "../Layoits/Login/Login";
+import Signup from "../Layoits/Signup/Signup";
+import PrivateRoutes from "./PrivateRoutes";
 
 
   const router = createBrowserRouter([
@@ -26,8 +28,12 @@ import Login from "../Layoits/Login/Login";
             element: <Login></Login>
         },
         {
+            path: '/signup',
+            element: <Signup></Signup>
+        },
+        {
             path: '/order/:category',
-            element: <Order></Order>,
+            element: <PrivateRoutes><Order></Order></PrivateRoutes>,
             loader: () => fetch("http://localhost:5000/menuItem") 
         },
       ]
