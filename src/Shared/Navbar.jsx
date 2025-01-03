@@ -1,6 +1,7 @@
 import { useContext } from "react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../Providers/AuthProvider";
+import { RiShoppingCartFill } from "react-icons/ri";
 
 
 const Navbar = () => {
@@ -19,9 +20,9 @@ const navlinks =
 <li><NavLink to='/menu'>Menu</NavLink></li>
 <li><NavLink to='/order/pizza'>Order Food</NavLink></li>
 
-{
+{/* {
   user ? <><button onClick={handleLogout} className="">Logout</button></> : <li><NavLink to='/login'>Login</NavLink></li>
-}
+} */}
 </>
 
     return (
@@ -56,8 +57,20 @@ const navlinks =
            {navlinks}
           </ul>
         </div>
-        <div className="navbar-end">
-          <a className="btn">Button</a>
+        <div className="navbar-end gap-7 items-center">
+          {
+            <Link to='/'>
+            <button className="indicator btn btn-ghost">
+<div className="badge badge-warning indicator-item right-2 top-2">0</div>
+            <RiShoppingCartFill className="text-3xl" />
+            </button>
+            </Link>
+          }
+          <a className="btn">
+          {
+  user ? <><button onClick={handleLogout} className="">Logout</button></> : <Link to='/login'>Login</Link>
+}
+          </a>
         </div>
       </div>
    </div>

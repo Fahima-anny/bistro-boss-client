@@ -33,7 +33,7 @@ import PrivateRoutes from "./PrivateRoutes";
         },
         {
             path: '/order/:category',
-            element: <PrivateRoutes><Order></Order></PrivateRoutes>,
+            element: <Order></Order>,
             loader: () => fetch("http://localhost:5000/menuItem") 
         },
       ]
