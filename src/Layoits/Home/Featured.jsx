@@ -5,7 +5,7 @@ import "./Featured.css"
 const Featured = () => {
     return (
         <div className=" featuredDiv bg-fixed my-20 text-white ">
-              <div className="overlay">
+              <div className="overlay pt-9">
              {/* <div className="hero-overlay bg-opacity-60"></div> */}
             <SectionTitle
             heading="FROM OUR MENU"

@@ -5,45 +5,59 @@ import { useForm } from "react-hook-form";
 import { AuthContext } from "../../Providers/AuthProvider";
 import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
 
 
 const Signup = () => {
 
-    const {createUser, updateUserProfile} = useContext(AuthContext) ;
-    const navigate = useNavigate() ;
+    const axiosPublic = useAxiosPublic() ;
+    const { createUser, updateUserProfile } = useContext(AuthContext);
+    const navigate = useNavigate();
     const {
         register,
         handleSubmit,
         reset,
         formState: { errors },
-      } = useForm()
+    } = useForm()
 
-    const onSubmit= (data) => {
+    const onSubmit = (data) => {
         console.log(data)
         createUser(data.email, data.pass)
-        .then(res => {
-            const loggedUser = res.user ;
-            console.log(loggedUser);
-            updateUserProfile(data.name, data.photo)
-            .then( () => {
-                console.log("user profile updated");
-                Swal.fire({
-                    title: "welcome",
-                    text: "New user account has been created",
-                    icon: "success"
-                  });
-                  reset() ;
-                  navigate('/')
+            .then(res => {
+                const loggedUser = res.user;
+                console.log(loggedUser);
+                updateUserProfile(data.name, data.photo)
+                    .then(() => {
+
+                        const userInfo = {
+                            name: data.name,
+                            email: data.email
+                        }
+                    axiosPublic.post("/users", userInfo)
+                    .then(res => {
+if(res.data.insertedId){
+    console.log(res.data);
+    Swal.fire({
+        title: "welcome",
+        text: "New user account has been created",
+        icon: "success"
+    });
+    reset();
+    navigate('/')
+}
+                    })
+
+                       
+                    })
             })
-        })
 
     }
 
     return (
         <div className="hero bg-base-200 min-h-screen">
             <Helmet>
-                        <title>Bistro Boss | Sign Up</title>
-                      </Helmet>
+                <title>Bistro Boss | Sign Up</title>
+            </Helmet>
             <div className="hero-content flex-col lg:flex-row-reverse">
                 <div className="text-center lg:text-left">
                     <h1 className="text-5xl font-bold">Sign Up now!</h1>
@@ -81,11 +95,11 @@ const Signup = () => {
                                 <span className="label-text">Password</span>
                             </label>
                             <input type="text" {...register("pass", {
-                                 required: true ,
-                                  minLength:8 ,
-                                   maxLength: 20,
-                                   pattern: /(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])/
-                                   })} placeholder="password" className="input input-bordered" required />
+                                required: true,
+                                minLength: 8,
+                                maxLength: 20,
+                                pattern: /(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])/
+                            })} placeholder="password" className="input input-bordered" required />
                             {errors.pass?.type === "required" && <span className="text-red-600">Password is required</span>}
                             {errors.pass?.type === "minLength" && <span className="text-red-600">Password must be at least 8 characters</span>}
                             {errors.pass?.type === "maxLength" && <span className="text-red-600">Password must be smaller than 20 characters</span>}

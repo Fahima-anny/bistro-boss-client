@@ -2,11 +2,13 @@ import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../Providers/AuthProvider";
 import { RiShoppingCartFill } from "react-icons/ri";
+import useCarts from "../hooks/useCarts";
 
 
 const Navbar = () => {
 
   const {user, logout} = useContext(AuthContext) ;
+  const [cart] = useCarts() ;
 
   const handleLogout = () => {
     logout()
@@ -59,9 +61,9 @@ const navlinks =
         </div>
         <div className="navbar-end gap-7 items-center">
           {
-            <Link to='/'>
+            <Link to='/dashboard/cart'>
             <button className="indicator btn btn-ghost">
-<div className="badge badge-warning indicator-item right-2 top-2">0</div>
+<div className="badge badge-warning indicator-item right-2 top-2">+{cart.length}</div>
             <RiShoppingCartFill className="text-3xl" />
             </button>
             </Link>

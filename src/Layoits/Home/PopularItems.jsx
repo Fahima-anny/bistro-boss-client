@@ -20,7 +20,7 @@ const popular = menu.filter(item => item.category === "popular")
 // } , [])
 
     return (
-        <div className="">
+        <div className="pt-10">
             <SectionTitle
             heading="FROM OUR MENU"
             para="---Check it out---"

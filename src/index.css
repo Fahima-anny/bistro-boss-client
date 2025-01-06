@@ -37,3 +37,13 @@ border: none !important;
   .swiper-pagination-bullet-active {
     background: #cfcfcf !important; /* Example: active bullet color */
   }
+
+  .dashboardMenu .menu li > *:not(ul, .menu-title, details, .btn):active, .menu li > *:not(ul, .menu-title, details, .btn).active, .menu li > details > summary:active {
+color: white !important;
+/* background-color: rgb(56, 56, 56); */
+text-decoration: none;
+  }
+
+  .divider-neutral:before, .divider-neutral:after {
+background-color: white;
+  }
