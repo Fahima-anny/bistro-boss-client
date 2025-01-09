@@ -1,22 +1,25 @@
 /* eslint-disable react/prop-types */
 import { Navigate, useLocation } from "react-router-dom";
+import useAdmin from "../hooks/useAdmin";
 import useAuth from "../Providers/useAuth";
 
 
-const PrivateRoutes = ({children}) => {
+const AdminRoutes = ({children}) => {
 
 const {user, loading} = useAuth() ;
+const [isAdmin, isAdminLoading] = useAdmin() ;
+
 const location = useLocation() ;
 
-if(loading){
+if(loading || isAdminLoading){
     return <div className="min-h-[90vh] flex justify-center items-center"><progress className="progress w-56"></progress></div>
 }
 
-if(user){
+if(user && isAdmin){
     return children ;
 }
 
-    return <Navigate to="/login" state={location.pathname}></Navigate>
+    return <Navigate to="/" state={location.pathname} replace></Navigate>
 };
 
-export default PrivateRoutes;
+export default AdminRoutes;

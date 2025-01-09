@@ -11,6 +11,8 @@ import PrivateRoutes from "./PrivateRoutes";
 import Dashboard from "../Layoits/Dashboard/Dashboard";
 import Cart from "../Layoits/Dashboard/Cart/Cart";
 import AllUsers from "../Layoits/Dashboard/AllUsers/AllUsers";
+import AddItems from "../Layoits/Dashboard/Additems/AddItems";
+import AdminRoutes from "./AdminRoutes";
 
 
 const router = createBrowserRouter([
@@ -45,13 +47,20 @@ const router = createBrowserRouter([
     path: "dashboard",
     element: <PrivateRoutes><Dashboard></Dashboard></PrivateRoutes>,
     children: [
+      // normal user routes 
       {
         path: 'cart',
         element: <Cart></Cart>
       },
+
+      // admin only routes 
       {
         path: 'allUsers',
-        element: <AllUsers></AllUsers>
+        element: <AdminRoutes><AllUsers></AllUsers></AdminRoutes>
+      },
+      {
+        path: 'addItems',
+        element: <AdminRoutes><AddItems></AddItems></AdminRoutes>
       }
     ]
   }

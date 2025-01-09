@@ -7,11 +7,12 @@ import { SlCalender } from 'react-icons/sl';
 import { TiContacts } from 'react-icons/ti';
 import { NavLink, Outlet } from 'react-router-dom';
 import useCarts from '../../hooks/useCarts';
+import useAdmin from '../../hooks/useAdmin';
 
 const Dashboard = () => {
 
     const [cart] = useCarts() ;
-const isAdmin = true ;
+const [isAdmin] = useAdmin() ;
 
     return (
         <div className='flex'>
@@ -22,7 +23,7 @@ const isAdmin = true ;
 {
     isAdmin ? <>
     <li><NavLink to="adminHome" className="uppercase py-4 font-bold font-serif"><FaHome className='text-xl'/> Admin Home</NavLink></li>
-<li><NavLink to="addItem" className="uppercase py-4 font-bold font-serif"><FaUtensils className='text-lg'/>Add Item</NavLink></li>
+<li><NavLink to="addItemS" className="uppercase py-4 font-bold font-serif"><FaUtensils className='text-lg'/>Add Item</NavLink></li>
 <li><NavLink to="manageItems" className="uppercase py-4 font-bold font-serif"><FaList className='text-xl'/>Manage Items</NavLink></li>
 <li><NavLink to="bookings" className="uppercase py-4 font-bold font-serif"><FaBook className='text-xl'/>Manage Bookings</NavLink></li>
 <li><NavLink to="allUsers" className="uppercase py-4 font-bold font-serif"><FaUsers className='text-xl'/>All Users</NavLink></li>
