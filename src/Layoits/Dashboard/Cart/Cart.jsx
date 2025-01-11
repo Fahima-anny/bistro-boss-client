@@ -2,6 +2,7 @@ import { RiDeleteBin6Fill } from "react-icons/ri";
 import useCarts from "../../../hooks/useCarts";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import { Link } from "react-router-dom";
 
 
 const Cart = () => {
@@ -41,8 +42,10 @@ axiosSecure.delete(`/carts/${id}`)
         <div>
 <div className="flex justify-between items-center">
 <h2 className="text-center text-3xl font-bold font-serif uppercase">Total orders: <span className="font-sans">{cart.length}</span></h2>
-<h2 className="text-center text-3xl font-bold font-serif uppercase">Total price: <span className="font-sans">${totalPrice}</span></h2>
-<button className="btn btn-warning">Pay</button>
+<h2 className="text-center text-3xl font-bold font-serif uppercase">Total price: <span className="font-sans">${totalPrice.toFixed(2)}</span></h2>
+<Link to="/dashboard/payment">
+<button disabled={!cart.length} className="btn btn-warning">Pay</button>
+</Link>
 </div>
 
 <div className="overflow-x-auto">

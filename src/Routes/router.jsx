@@ -13,6 +13,9 @@ import Cart from "../Layoits/Dashboard/Cart/Cart";
 import AllUsers from "../Layoits/Dashboard/AllUsers/AllUsers";
 import AddItems from "../Layoits/Dashboard/Additems/AddItems";
 import AdminRoutes from "./AdminRoutes";
+import ManageItems from "../Layoits/Dashboard/ManageItems/ManageItems";
+import UpdateItem from "../Layoits/Dashboard/UpdateItem/UpdateItem";
+import Payment from "../Layoits/Dashboard/Payment/Payment";
 
 
 const router = createBrowserRouter([
@@ -52,6 +55,10 @@ const router = createBrowserRouter([
         path: 'cart',
         element: <Cart></Cart>
       },
+      {
+        path: 'payment',
+        element: <Payment></Payment>
+      },
 
       // admin only routes 
       {
@@ -61,7 +68,16 @@ const router = createBrowserRouter([
       {
         path: 'addItems',
         element: <AdminRoutes><AddItems></AddItems></AdminRoutes>
-      }
+      },
+      {
+        path: 'manageItems',
+        element: <AdminRoutes><ManageItems></ManageItems></AdminRoutes>
+      },
+      {
+        path: 'updateItem/:id',
+        element: <AdminRoutes><UpdateItem></UpdateItem></AdminRoutes>,
+        loader: ({params}) => fetch(`http://localhost:5000/menu/${params.id}`)
+      },
     ]
   }
 ]);

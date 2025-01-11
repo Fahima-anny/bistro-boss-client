@@ -30,7 +30,7 @@ const [isAdmin] = useAdmin() ;
     </>
 :   <>
 <li><NavLink to="userHome" className="uppercase py-4 font-bold font-serif"><FaHome className='text-xl'/> User Home</NavLink></li>
-<li><NavLink to="reservation" className="uppercase py-4 font-bold font-serif"><SlCalender className='text-lg'/>Reservation</NavLink></li>
+<li><NavLink to="payment" className="uppercase py-4 font-bold font-serif"><SlCalender className='text-lg'/>Reservation</NavLink></li>
 <li><NavLink to="history" className="uppercase py-4 font-bold font-serif"><MdPayments className='text-xl'/> payment history</NavLink></li>
 <li><NavLink to="cart" className="uppercase py-4 font-bold font-serif"><FaShoppingCart className='text-xl'/> My Cart ({cart.length})</NavLink></li>
 <li><NavLink to="review" className="uppercase py-4 font-bold font-serif"><PiListStarFill className='text-xl'/>Add review</NavLink></li>
