@@ -53,14 +53,16 @@ const AuthProvider = ({ children }) => {
                 .then(Res=> {
                     if(Res.data.token){
                         localStorage.setItem('access-token', Res.data.token)
+                        setLoading(false);
                     }
                 })
             }
             else {
                 // remove token 
                 localStorage.removeItem("access-token")
+                setLoading(false);
             }
-            setLoading(false);
+
         })
 
         return () => unSubscribe();

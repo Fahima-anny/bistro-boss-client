@@ -16,6 +16,9 @@ import AdminRoutes from "./AdminRoutes";
 import ManageItems from "../Layoits/Dashboard/ManageItems/ManageItems";
 import UpdateItem from "../Layoits/Dashboard/UpdateItem/UpdateItem";
 import Payment from "../Layoits/Dashboard/Payment/Payment";
+import PaymentHistory from "../Layoits/Dashboard/paymentHistory/PaymentHistory";
+import UserHome from "../Layoits/Dashboard/UserHome/UserHome";
+import AdminHome from "../Layoits/Dashboard/AdminHome/AdminHome";
 
 
 const router = createBrowserRouter([
@@ -59,11 +62,23 @@ const router = createBrowserRouter([
         path: 'payment',
         element: <Payment></Payment>
       },
+      {
+        path: 'userHome',
+        element: <UserHome></UserHome>
+      },
+      {
+        path: 'paymentHistory',
+        element: <PaymentHistory></PaymentHistory>
+      },
 
       // admin only routes 
       {
         path: 'allUsers',
         element: <AdminRoutes><AllUsers></AllUsers></AdminRoutes>
+      },
+      {
+        path: 'adminHome',
+        element: <AdminRoutes><AdminHome></AdminHome></AdminRoutes>
       },
       {
         path: 'addItems',

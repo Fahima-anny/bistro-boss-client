@@ -21,7 +21,9 @@ const [isAdmin] = useAdmin() ;
 <ul className='menu dashboardMenu p-4 space-y-3'>
 
 {
-    isAdmin ? <>
+    isAdmin ? 
+    // admin routes 
+    <>
     <li><NavLink to="adminHome" className="uppercase py-4 font-bold font-serif"><FaHome className='text-xl'/> Admin Home</NavLink></li>
 <li><NavLink to="addItemS" className="uppercase py-4 font-bold font-serif"><FaUtensils className='text-lg'/>Add Item</NavLink></li>
 <li><NavLink to="manageItems" className="uppercase py-4 font-bold font-serif"><FaList className='text-xl'/>Manage Items</NavLink></li>
@@ -29,9 +31,10 @@ const [isAdmin] = useAdmin() ;
 <li><NavLink to="allUsers" className="uppercase py-4 font-bold font-serif"><FaUsers className='text-xl'/>All Users</NavLink></li>
     </>
 :   <>
+{/* user routes  */}
 <li><NavLink to="userHome" className="uppercase py-4 font-bold font-serif"><FaHome className='text-xl'/> User Home</NavLink></li>
 <li><NavLink to="payment" className="uppercase py-4 font-bold font-serif"><SlCalender className='text-lg'/>Reservation</NavLink></li>
-<li><NavLink to="history" className="uppercase py-4 font-bold font-serif"><MdPayments className='text-xl'/> payment history</NavLink></li>
+<li><NavLink to="/dashboard/paymentHistory" className="uppercase py-4 font-bold font-serif"><MdPayments className='text-xl'/> Payment history</NavLink></li>
 <li><NavLink to="cart" className="uppercase py-4 font-bold font-serif"><FaShoppingCart className='text-xl'/> My Cart ({cart.length})</NavLink></li>
 <li><NavLink to="review" className="uppercase py-4 font-bold font-serif"><PiListStarFill className='text-xl'/>Add review</NavLink></li>
 <li><NavLink to="booking" className="uppercase py-4 font-bold font-serif"><MdDateRange className='text-xl'/> my Booking</NavLink></li>

@@ -3,12 +3,14 @@ import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../Providers/AuthProvider";
 import { RiShoppingCartFill } from "react-icons/ri";
 import useCarts from "../hooks/useCarts";
+import useAdmin from "../hooks/useAdmin";
 
 
 const Navbar = () => {
 
   const {user, logout} = useContext(AuthContext) ;
   const [cart] = useCarts() ;
+  const [isAdmin] = useAdmin() ;
 
   const handleLogout = () => {
     logout()
@@ -21,6 +23,12 @@ const navlinks =
 <li><NavLink to='/'>Home</NavLink></li>
 <li><NavLink to='/menu'>Menu</NavLink></li>
 <li><NavLink to='/order/pizza'>Order Food</NavLink></li>
+{
+  user && isAdmin && <li><NavLink to='/dashboard/adminHome'>Dashboard</NavLink></li>
+}
+{
+  user && !isAdmin && <li><NavLink to='/dashboard/userHome'>Dashboard</NavLink></li>
+}
 
 {/* {
   user ? <><button onClick={handleLogout} className="">Logout</button></> : <li><NavLink to='/login'>Login</NavLink></li>
