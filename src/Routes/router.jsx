@@ -45,7 +45,7 @@ const router = createBrowserRouter([
       {
         path: '/order/:category',
         element: <Order></Order>,
-        loader: () => fetch("http://localhost:5000/menuItem")
+        loader: () => fetch("https://bistro-boss-server-beta-beryl.vercel.app/menuItem")
       },
     ]
   },
@@ -91,7 +91,7 @@ const router = createBrowserRouter([
       {
         path: 'updateItem/:id',
         element: <AdminRoutes><UpdateItem></UpdateItem></AdminRoutes>,
-        loader: ({params}) => fetch(`http://localhost:5000/menu/${params.id}`)
+        loader: ({params}) => fetch(`https://bistro-boss-server-beta-beryl.vercel.app/menu/${params.id}`)
       },
     ]
   }
